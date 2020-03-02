@@ -16,27 +16,11 @@ Compiler    : MinGW-g++ 6.3.0 and g++ 7.4.0
 #include <iostream>
 #include <cstdlib>
 
-#include "src/color.h"
-#include "src/circle.h"
-#include "src/square.h"
-#include "src/rectangle.h"
-#include "src/triangle.h"
-
 using namespace std;
 
 #define WAIT_ENTER while(cin.get()!='\n')
 
 int main() {
-
-    Color color(Color::Code::BLACK);
-
-    Triangle triangle;
-    Triangle triangle2 (color);
-    Triangle triangle3 (Color::Code::RED);
-
-    cout << triangle << endl;
-    cout << triangle2 << endl;
-    cout << triangle3 << endl;
 
 
     cout << "Please, press <ENTER> to end the program" << endl;
