@@ -19,14 +19,7 @@ bool Date::operator==(const Date &date) const {
 }
 
 bool Date::operator!=(const Date &date) const {
-    if(this->_year != date._year){
-        if(this->_month != date._month){
-            if(this->_day != date._day){
-                return true;
-            }
-        }
-    }
-    return false;
+    return !(*this == date);
 }
 
 bool Date::operator<(const Date &date) const {
@@ -52,11 +45,11 @@ bool Date::operator>(const Date &date) const {
 }
 
 bool Date::operator<=(const Date &date) const {
-    return *this == date or *this < date;
+    return !(*this > date);
 }
 
 bool Date::operator>=(const Date &date) const {
-    return *this == date or *this > date;
+    return !(*this < date);
 }
 
 Date Date::operator+(int jours) const {
