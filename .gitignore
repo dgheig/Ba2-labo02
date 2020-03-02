@@ -1,0 +1,12 @@
+*.exe
+*.o
+builds/*
+doc/doxy/latex/*
+nbproject
+obj
+bin/*
+lib*
+cmake/*
+.vscode
+labo02
+Makefile
