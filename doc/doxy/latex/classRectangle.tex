@@ -1,0 +1,235 @@
+\hypertarget{classRectangle}{}\section{Rectangle Class Reference}
+\label{classRectangle}\index{Rectangle@{Rectangle}}
+
+
+{\ttfamily \#include $<$rectangle.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classRectangle_a66491060fb8ab1dbad9742541c746293}{Rectangle} (double width=0, double height=0, const \hyperlink{classColor}{Color} \&color=\hyperlink{classColor}{Color}())
+\begin{DoxyCompactList}\small\item\em Create a rectangle with a width, a height and a color, a width and a height, a width or with nothing. \end{DoxyCompactList}\item 
+\hyperlink{classRectangle_acc998437340322592367dee053da3414}{Rectangle} (const \hyperlink{classColor}{Color} \&color)
+\begin{DoxyCompactList}\small\item\em Create a rectangle with an object color. \end{DoxyCompactList}\item 
+\hyperlink{classRectangle_ad1af7b79e779d6d8765229f2d41107f6}{Rectangle} (\hyperlink{classColor_a20a7b04657c1d83fae5d54514d3f1622}{Color\+::\+Code} code)
+\begin{DoxyCompactList}\small\item\em Create a rectangle with a color code (enum) \end{DoxyCompactList}\item 
+double \hyperlink{classRectangle_ae2fb8da7f67a36a80d8f789eec63a074}{get\+Height} () const
+\begin{DoxyCompactList}\small\item\em Get the height of the rectangle. \end{DoxyCompactList}\item 
+double \hyperlink{classRectangle_a0d38078e09cd3151d3009eed3a449660}{get\+Width} () const
+\begin{DoxyCompactList}\small\item\em Get the width of the rectangle. \end{DoxyCompactList}\item 
+double \hyperlink{classRectangle_addf6cfd9097d92677f6a76f591b88e22}{get\+Surface} () const
+\begin{DoxyCompactList}\small\item\em Calculate the surface of the rectangle. \end{DoxyCompactList}\item 
+\hyperlink{classColor}{Color} \hyperlink{classRectangle_a9bd050cc586a325ed98c83245bb7b7e6}{get\+Color} () const
+\begin{DoxyCompactList}\small\item\em Get the color of the rectangle. \end{DoxyCompactList}\item 
+\hyperlink{classRectangle}{Rectangle} \& \hyperlink{classRectangle_ac4d4ed333eff18fe9bc790a9d9fe5af5}{set\+Height} (double height)
+\begin{DoxyCompactList}\small\item\em Change the height of the rectangle. \end{DoxyCompactList}\item 
+\hyperlink{classRectangle}{Rectangle} \& \hyperlink{classRectangle_a52dd37288586383161274d0b6ec5b7f7}{set\+Width} (double width)
+\begin{DoxyCompactList}\small\item\em Change the width of the rectangle. \end{DoxyCompactList}\item 
+\hyperlink{classRectangle}{Rectangle} \& \hyperlink{classRectangle_adbc9fb0c86095b3245bc5b38ba9619a6}{set\+Color} (const \hyperlink{classColor}{Color} \&color)
+\begin{DoxyCompactList}\small\item\em Change the color of the rectangle with an object color. \end{DoxyCompactList}\item 
+\hyperlink{classRectangle}{Rectangle} \& \hyperlink{classRectangle_a684b70cefa746172e045702d2e0bdf08}{set\+Color} (\hyperlink{classColor_a20a7b04657c1d83fae5d54514d3f1622}{Color\+::\+Code} color)
+\begin{DoxyCompactList}\small\item\em Change the color of the rectangle with a color code (enum) \end{DoxyCompactList}\item 
+std\+::ostream \& \hyperlink{classRectangle_a5b1284a98460b547941ba6ca62ea8ac7}{display} (std\+::ostream \&stream=std\+::cout) const
+\begin{DoxyCompactList}\small\item\em Display a rectangle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRectangle_a66491060fb8ab1dbad9742541c746293}\label{classRectangle_a66491060fb8ab1dbad9742541c746293}} 
+\index{Rectangle@{Rectangle}!Rectangle@{Rectangle}}
+\index{Rectangle@{Rectangle}!Rectangle@{Rectangle}}
+\subsubsection{\texorpdfstring{Rectangle()}{Rectangle()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Rectangle\+::\+Rectangle (\begin{DoxyParamCaption}\item[{double}]{width = {\ttfamily 0},  }\item[{double}]{height = {\ttfamily 0},  }\item[{const \hyperlink{classColor}{Color} \&}]{color = {\ttfamily \hyperlink{classColor}{Color}()} }\end{DoxyParamCaption})}
+
+
+
+Create a rectangle with a width, a height and a color, a width and a height, a width or with nothing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & default value 0 \\
+\hline
+{\em height} & default value 0 \\
+\hline
+{\em color} & default value \hyperlink{classColor}{Color()} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRectangle_acc998437340322592367dee053da3414}\label{classRectangle_acc998437340322592367dee053da3414}} 
+\index{Rectangle@{Rectangle}!Rectangle@{Rectangle}}
+\index{Rectangle@{Rectangle}!Rectangle@{Rectangle}}
+\subsubsection{\texorpdfstring{Rectangle()}{Rectangle()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Rectangle\+::\+Rectangle (\begin{DoxyParamCaption}\item[{const \hyperlink{classColor}{Color} \&}]{color }\end{DoxyParamCaption})}
+
+
+
+Create a rectangle with an object color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRectangle_ad1af7b79e779d6d8765229f2d41107f6}\label{classRectangle_ad1af7b79e779d6d8765229f2d41107f6}} 
+\index{Rectangle@{Rectangle}!Rectangle@{Rectangle}}
+\index{Rectangle@{Rectangle}!Rectangle@{Rectangle}}
+\subsubsection{\texorpdfstring{Rectangle()}{Rectangle()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Rectangle\+::\+Rectangle (\begin{DoxyParamCaption}\item[{\hyperlink{classColor_a20a7b04657c1d83fae5d54514d3f1622}{Color\+::\+Code}}]{code }\end{DoxyParamCaption})}
+
+
+
+Create a rectangle with a color code (enum) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classRectangle_a5b1284a98460b547941ba6ca62ea8ac7}\label{classRectangle_a5b1284a98460b547941ba6ca62ea8ac7}} 
+\index{Rectangle@{Rectangle}!display@{display}}
+\index{display@{display}!Rectangle@{Rectangle}}
+\subsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily std\+::ostream\& Rectangle\+::display (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{stream = {\ttfamily std\+:\+:cout} }\end{DoxyParamCaption}) const}
+
+
+
+Display a rectangle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stream} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The stream 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRectangle_a9bd050cc586a325ed98c83245bb7b7e6}\label{classRectangle_a9bd050cc586a325ed98c83245bb7b7e6}} 
+\index{Rectangle@{Rectangle}!get\+Color@{get\+Color}}
+\index{get\+Color@{get\+Color}!Rectangle@{Rectangle}}
+\subsubsection{\texorpdfstring{get\+Color()}{getColor()}}
+{\footnotesize\ttfamily \hyperlink{classColor}{Color} Rectangle\+::get\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the color of the rectangle. 
+
+\begin{DoxyReturn}{Returns}
+The color of the rectangle 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRectangle_ae2fb8da7f67a36a80d8f789eec63a074}\label{classRectangle_ae2fb8da7f67a36a80d8f789eec63a074}} 
+\index{Rectangle@{Rectangle}!get\+Height@{get\+Height}}
+\index{get\+Height@{get\+Height}!Rectangle@{Rectangle}}
+\subsubsection{\texorpdfstring{get\+Height()}{getHeight()}}
+{\footnotesize\ttfamily double Rectangle\+::get\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the height of the rectangle. 
+
+\begin{DoxyReturn}{Returns}
+The height of the rectangle 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRectangle_addf6cfd9097d92677f6a76f591b88e22}\label{classRectangle_addf6cfd9097d92677f6a76f591b88e22}} 
+\index{Rectangle@{Rectangle}!get\+Surface@{get\+Surface}}
+\index{get\+Surface@{get\+Surface}!Rectangle@{Rectangle}}
+\subsubsection{\texorpdfstring{get\+Surface()}{getSurface()}}
+{\footnotesize\ttfamily double Rectangle\+::get\+Surface (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Calculate the surface of the rectangle. 
+
+\begin{DoxyReturn}{Returns}
+The surface f the rectangle 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRectangle_a0d38078e09cd3151d3009eed3a449660}\label{classRectangle_a0d38078e09cd3151d3009eed3a449660}} 
+\index{Rectangle@{Rectangle}!get\+Width@{get\+Width}}
+\index{get\+Width@{get\+Width}!Rectangle@{Rectangle}}
+\subsubsection{\texorpdfstring{get\+Width()}{getWidth()}}
+{\footnotesize\ttfamily double Rectangle\+::get\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the width of the rectangle. 
+
+\begin{DoxyReturn}{Returns}
+The width of the rectangle 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRectangle_adbc9fb0c86095b3245bc5b38ba9619a6}\label{classRectangle_adbc9fb0c86095b3245bc5b38ba9619a6}} 
+\index{Rectangle@{Rectangle}!set\+Color@{set\+Color}}
+\index{set\+Color@{set\+Color}!Rectangle@{Rectangle}}
+\subsubsection{\texorpdfstring{set\+Color()}{setColor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classRectangle}{Rectangle}\& Rectangle\+::set\+Color (\begin{DoxyParamCaption}\item[{const \hyperlink{classColor}{Color} \&}]{color }\end{DoxyParamCaption})}
+
+
+
+Change the color of the rectangle with an object color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The rectangle 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRectangle_a684b70cefa746172e045702d2e0bdf08}\label{classRectangle_a684b70cefa746172e045702d2e0bdf08}} 
+\index{Rectangle@{Rectangle}!set\+Color@{set\+Color}}
+\index{set\+Color@{set\+Color}!Rectangle@{Rectangle}}
+\subsubsection{\texorpdfstring{set\+Color()}{setColor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classRectangle}{Rectangle}\& Rectangle\+::set\+Color (\begin{DoxyParamCaption}\item[{\hyperlink{classColor_a20a7b04657c1d83fae5d54514d3f1622}{Color\+::\+Code}}]{color }\end{DoxyParamCaption})}
+
+
+
+Change the color of the rectangle with a color code (enum) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The rectangle 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRectangle_ac4d4ed333eff18fe9bc790a9d9fe5af5}\label{classRectangle_ac4d4ed333eff18fe9bc790a9d9fe5af5}} 
+\index{Rectangle@{Rectangle}!set\+Height@{set\+Height}}
+\index{set\+Height@{set\+Height}!Rectangle@{Rectangle}}
+\subsubsection{\texorpdfstring{set\+Height()}{setHeight()}}
+{\footnotesize\ttfamily \hyperlink{classRectangle}{Rectangle}\& Rectangle\+::set\+Height (\begin{DoxyParamCaption}\item[{double}]{height }\end{DoxyParamCaption})}
+
+
+
+Change the height of the rectangle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em height} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The rectangle 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRectangle_a52dd37288586383161274d0b6ec5b7f7}\label{classRectangle_a52dd37288586383161274d0b6ec5b7f7}} 
+\index{Rectangle@{Rectangle}!set\+Width@{set\+Width}}
+\index{set\+Width@{set\+Width}!Rectangle@{Rectangle}}
+\subsubsection{\texorpdfstring{set\+Width()}{setWidth()}}
+{\footnotesize\ttfamily \hyperlink{classRectangle}{Rectangle}\& Rectangle\+::set\+Width (\begin{DoxyParamCaption}\item[{double}]{width }\end{DoxyParamCaption})}
+
+
+
+Change the width of the rectangle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em base} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The rectangle 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{rectangle_8h}{rectangle.\+h}\end{DoxyCompactItemize}

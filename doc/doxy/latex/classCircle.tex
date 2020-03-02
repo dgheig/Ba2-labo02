@@ -1,0 +1,198 @@
+\hypertarget{classCircle}{}\section{Circle Class Reference}
+\label{classCircle}\index{Circle@{Circle}}
+
+
+{\ttfamily \#include $<$circle.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCircle_a47da8474569bafdf019ff4063a69bc0c}{Circle} (double radius=0, const \hyperlink{classColor}{Color} \&color=\hyperlink{classColor}{Color}())
+\begin{DoxyCompactList}\small\item\em Create a circle with color and radius, a radius or with nothing. \end{DoxyCompactList}\item 
+\hyperlink{classCircle_a5717f409ec880455c624c66e6d72986d}{Circle} (const \hyperlink{classColor}{Color} \&color)
+\begin{DoxyCompactList}\small\item\em Create a circle with an object color. \end{DoxyCompactList}\item 
+\hyperlink{classCircle_a3a467448cf897cd57b6037c8e94578c7}{Circle} (\hyperlink{classColor_a20a7b04657c1d83fae5d54514d3f1622}{Color\+::\+Code} code)
+\begin{DoxyCompactList}\small\item\em Create a circle with a color by a color code (enum) \end{DoxyCompactList}\item 
+\hyperlink{classCircle}{Circle} \& \hyperlink{classCircle_a4c92fd2f5e3149d9d5b5d1a4ce4773fc}{set\+Radius} (double radius)
+\begin{DoxyCompactList}\small\item\em Change the radius of the circle. \end{DoxyCompactList}\item 
+\hyperlink{classCircle}{Circle} \& \hyperlink{classCircle_a7e0039e4c56e5f4c5e26aa56c72a17f5}{set\+Color} (const \hyperlink{classColor}{Color} \&color)
+\begin{DoxyCompactList}\small\item\em Change the color of the circle with an object color. \end{DoxyCompactList}\item 
+\hyperlink{classCircle}{Circle} \& \hyperlink{classCircle_aeff5f4c8614715508b9224fbf9b8a62d}{set\+Color} (\hyperlink{classColor_a20a7b04657c1d83fae5d54514d3f1622}{Color\+::\+Code} color)
+\begin{DoxyCompactList}\small\item\em Change the color of the circle with a color code (enum) \end{DoxyCompactList}\item 
+double \hyperlink{classCircle_a58eb59828b4459ca38932b87c65f03a9}{get\+Radius} () const
+\begin{DoxyCompactList}\small\item\em Get the radius of the circle. \end{DoxyCompactList}\item 
+double \hyperlink{classCircle_a1c83fc4e8df86bc91239462210f3b2d3}{get\+Surface} () const
+\begin{DoxyCompactList}\small\item\em Calculate the surface of the circle. \end{DoxyCompactList}\item 
+\hyperlink{classColor}{Color} \hyperlink{classCircle_a07a3c058df52ca4294103fd965490f12}{get\+Color} () const
+\begin{DoxyCompactList}\small\item\em Get the color of the circle. \end{DoxyCompactList}\item 
+std\+::ostream \& \hyperlink{classCircle_ab8b37180fc8799e9422f659d4ab0a9da}{display} (std\+::ostream \&stream=std\+::cout) const
+\begin{DoxyCompactList}\small\item\em Display a circle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCircle_a47da8474569bafdf019ff4063a69bc0c}\label{classCircle_a47da8474569bafdf019ff4063a69bc0c}} 
+\index{Circle@{Circle}!Circle@{Circle}}
+\index{Circle@{Circle}!Circle@{Circle}}
+\subsubsection{\texorpdfstring{Circle()}{Circle()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Circle\+::\+Circle (\begin{DoxyParamCaption}\item[{double}]{radius = {\ttfamily 0},  }\item[{const \hyperlink{classColor}{Color} \&}]{color = {\ttfamily \hyperlink{classColor}{Color}()} }\end{DoxyParamCaption})}
+
+
+
+Create a circle with color and radius, a radius or with nothing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em radius} & default value 0 \\
+\hline
+{\em color} & default value \hyperlink{classColor}{Color()} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCircle_a5717f409ec880455c624c66e6d72986d}\label{classCircle_a5717f409ec880455c624c66e6d72986d}} 
+\index{Circle@{Circle}!Circle@{Circle}}
+\index{Circle@{Circle}!Circle@{Circle}}
+\subsubsection{\texorpdfstring{Circle()}{Circle()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Circle\+::\+Circle (\begin{DoxyParamCaption}\item[{const \hyperlink{classColor}{Color} \&}]{color }\end{DoxyParamCaption})}
+
+
+
+Create a circle with an object color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCircle_a3a467448cf897cd57b6037c8e94578c7}\label{classCircle_a3a467448cf897cd57b6037c8e94578c7}} 
+\index{Circle@{Circle}!Circle@{Circle}}
+\index{Circle@{Circle}!Circle@{Circle}}
+\subsubsection{\texorpdfstring{Circle()}{Circle()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Circle\+::\+Circle (\begin{DoxyParamCaption}\item[{\hyperlink{classColor_a20a7b04657c1d83fae5d54514d3f1622}{Color\+::\+Code}}]{code }\end{DoxyParamCaption})}
+
+
+
+Create a circle with a color by a color code (enum) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCircle_ab8b37180fc8799e9422f659d4ab0a9da}\label{classCircle_ab8b37180fc8799e9422f659d4ab0a9da}} 
+\index{Circle@{Circle}!display@{display}}
+\index{display@{display}!Circle@{Circle}}
+\subsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily std\+::ostream\& Circle\+::display (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{stream = {\ttfamily std\+:\+:cout} }\end{DoxyParamCaption}) const}
+
+
+
+Display a circle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stream} & default valut cout \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The stream 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCircle_a07a3c058df52ca4294103fd965490f12}\label{classCircle_a07a3c058df52ca4294103fd965490f12}} 
+\index{Circle@{Circle}!get\+Color@{get\+Color}}
+\index{get\+Color@{get\+Color}!Circle@{Circle}}
+\subsubsection{\texorpdfstring{get\+Color()}{getColor()}}
+{\footnotesize\ttfamily \hyperlink{classColor}{Color} Circle\+::get\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the color of the circle. 
+
+\begin{DoxyReturn}{Returns}
+The color of the circle 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCircle_a58eb59828b4459ca38932b87c65f03a9}\label{classCircle_a58eb59828b4459ca38932b87c65f03a9}} 
+\index{Circle@{Circle}!get\+Radius@{get\+Radius}}
+\index{get\+Radius@{get\+Radius}!Circle@{Circle}}
+\subsubsection{\texorpdfstring{get\+Radius()}{getRadius()}}
+{\footnotesize\ttfamily double Circle\+::get\+Radius (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the radius of the circle. 
+
+\begin{DoxyReturn}{Returns}
+The radius of the circle 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCircle_a1c83fc4e8df86bc91239462210f3b2d3}\label{classCircle_a1c83fc4e8df86bc91239462210f3b2d3}} 
+\index{Circle@{Circle}!get\+Surface@{get\+Surface}}
+\index{get\+Surface@{get\+Surface}!Circle@{Circle}}
+\subsubsection{\texorpdfstring{get\+Surface()}{getSurface()}}
+{\footnotesize\ttfamily double Circle\+::get\+Surface (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Calculate the surface of the circle. 
+
+\begin{DoxyReturn}{Returns}
+The surface of the circle 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCircle_a7e0039e4c56e5f4c5e26aa56c72a17f5}\label{classCircle_a7e0039e4c56e5f4c5e26aa56c72a17f5}} 
+\index{Circle@{Circle}!set\+Color@{set\+Color}}
+\index{set\+Color@{set\+Color}!Circle@{Circle}}
+\subsubsection{\texorpdfstring{set\+Color()}{setColor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classCircle}{Circle}\& Circle\+::set\+Color (\begin{DoxyParamCaption}\item[{const \hyperlink{classColor}{Color} \&}]{color }\end{DoxyParamCaption})}
+
+
+
+Change the color of the circle with an object color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The circle 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCircle_aeff5f4c8614715508b9224fbf9b8a62d}\label{classCircle_aeff5f4c8614715508b9224fbf9b8a62d}} 
+\index{Circle@{Circle}!set\+Color@{set\+Color}}
+\index{set\+Color@{set\+Color}!Circle@{Circle}}
+\subsubsection{\texorpdfstring{set\+Color()}{setColor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classCircle}{Circle}\& Circle\+::set\+Color (\begin{DoxyParamCaption}\item[{\hyperlink{classColor_a20a7b04657c1d83fae5d54514d3f1622}{Color\+::\+Code}}]{color }\end{DoxyParamCaption})}
+
+
+
+Change the color of the circle with a color code (enum) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The circle 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCircle_a4c92fd2f5e3149d9d5b5d1a4ce4773fc}\label{classCircle_a4c92fd2f5e3149d9d5b5d1a4ce4773fc}} 
+\index{Circle@{Circle}!set\+Radius@{set\+Radius}}
+\index{set\+Radius@{set\+Radius}!Circle@{Circle}}
+\subsubsection{\texorpdfstring{set\+Radius()}{setRadius()}}
+{\footnotesize\ttfamily \hyperlink{classCircle}{Circle}\& Circle\+::set\+Radius (\begin{DoxyParamCaption}\item[{double}]{radius }\end{DoxyParamCaption})}
+
+
+
+Change the radius of the circle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em radius} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The circle 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{circle_8h}{circle.\+h}\end{DoxyCompactItemize}
