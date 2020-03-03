@@ -15,4 +15,4 @@ jobs:
       run: make
 
     - name: run labo02
-      run: ./Ba-labo2 <<< '\n'
+      run: ./builds/Ba-labo2 <<< '\n'
