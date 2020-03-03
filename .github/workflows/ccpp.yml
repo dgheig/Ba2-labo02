@@ -8,11 +8,8 @@ jobs:
     steps:
     - uses: actions/checkout@master
 
-    - name: Prepare builds
-      run: mkdir -p builds && cd builds
-
     - name: run cmake
-      run: cmake ..
+      run: cmake .
 
     - name: run make
       run: make
