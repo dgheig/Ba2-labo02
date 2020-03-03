@@ -58,24 +58,16 @@ void Date::setValidity() {
 
 }
 
-bool Date::isYearValid() {
-
+bool Date::isYearValid(unsigned year) {
+    return true;
 }
 
-bool Date::isMonthValid() {
-    return 0 < _month and _month < 13;
+bool Date::isMonthValid(unsigned month) {
+    return 0 < month and month < 13;
 }
 
-bool Date::isDayValid() {
-    switch (expression)
-    {
-    case /* constant-expression */:
-        /* code */
-        break;
-
-    default:
-        break;
-    }
+bool Date::isDayValid(unsigned day, unsigned month, unsigned year) {
+    return 0 < day and day <= dayInMonth(month, year);
 }
 
 unsigned Date::dayInMonth(unsigned month, unsigned year) {

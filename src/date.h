@@ -50,9 +50,9 @@ class Date {
 
     private:
         void setValidity();
-        bool isYearValid();
-        bool isMonthValid();
-        bool isDayValid();
+        static bool isYearValid(unsigned year);
+        static bool isMonthValid(unsigned month);
+        static bool isDayValid(unsigned day, unsigned month, unsigned year);
 
         bool _is_valid;
         unsigned _year;
