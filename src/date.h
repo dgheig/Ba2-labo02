@@ -2,6 +2,7 @@
 #define DATE_H
 
 #include <string>
+#include <iostream>
 
 enum class Month {
     JANUARY = 1,
@@ -37,6 +38,15 @@ class Date {
 
         static bool isLeap(unsigned year);
         static unsigned dayInMonth(unsigned month, unsigned year);
+        bool operator==(const Date& date) const;
+        bool operator!=(const Date& date) const;
+        bool operator<(const Date& date) const;
+        bool operator<=(const Date& date) const;
+        bool operator>(const Date& date) const;
+        bool operator>=(const Date& date) const;
+        Date operator+(int jours) const;
+        Date operator-(int jours) const;
+        std::ostream& afficher(std::ostream& os = std::cout) const;
 
     private:
         void setValidity();
@@ -48,6 +58,10 @@ class Date {
         unsigned _year;
         unsigned _month;
         unsigned _day;
+
 };
+
+std::ostream& operator<<(std::ostream& os, const Date& date);
+
 
 #endif
