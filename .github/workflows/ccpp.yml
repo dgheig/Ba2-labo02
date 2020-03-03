@@ -1,0 +1,21 @@
+name: C/C++ CI
+
+on: [push]
+
+jobs:
+  cmake:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+
+    - name: Prepare builds
+      run: mkdir -p builds && cd builds
+
+    - name: run cmake
+      run: cmake ..
+
+    - name: run make
+      run: make
+
+    - name: run labo02
+      run: ./Ba-labo2 <<< '\n'

@@ -44,21 +44,6 @@ obj_dir:
 
 setup: build_dir obj_dir
 
-color.o: setup $(SRC)/color.h $(SRC)/color.cpp
-	$(COMPILE) -c $(SRC)/color.cpp -o $(OBJ)/color.o
-
-circle.o: setup $(SRC)/circle.h $(SRC)/circle.cpp
-	$(COMPILE) -c $(SRC)/circle.cpp -o $(OBJ)/circle.o
-
-square.o: setup $(SRC)/square.h $(SRC)/square.cpp
-	$(COMPILE) -c $(SRC)/square.cpp -o $(OBJ)/square.o
-
-triangle.o: setup $(SRC)/triangle.h $(SRC)/triangle.cpp
-	$(COMPILE) -c $(SRC)/triangle.cpp -o $(OBJ)/triangle.o
-
-rectangle.o: setup $(SRC)/rectangle.h $(SRC)/rectangle.cpp
-	$(COMPILE) -c $(SRC)/rectangle.cpp -o $(OBJ)/rectangle.o
-
 labo02: setup color.o circle.o square.o triangle.o rectangle.o labo_02_comte_bruno_gallay_david.cpp
 	$(COMPILE) $(OBJECT) $(HEADERS) labo_02_comte_bruno_gallay_david.cpp -o labo02
 
