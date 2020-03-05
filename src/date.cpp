@@ -19,6 +19,7 @@ const char* const MONTH_NAME[] = {
 };
 
 size_t MONTH_NAME_SIZE = sizeof(MONTH_NAME);
+const unsigned REF_YEAR = 1582;
 
 std::string monthToString(unsigned month) {
     if(month < MONTH_NAME_SIZE)
@@ -115,7 +116,7 @@ bool Date::isDateValid(unsigned day, unsigned month, unsigned year) {
 }
 
 bool Date::isYearValid(unsigned year) {
-    return year > 1970;
+    return year >= REF_YEAR;
 }
 
 bool Date::isMonthValid(unsigned month) {
