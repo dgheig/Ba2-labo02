@@ -50,24 +50,29 @@ Date::Date(unsigned day, Month month, unsigned year): Date(_day, unsigned(month)
 }
 
 Date& Date::setDay(unsigned day) {
-
-}
-
-Date& Date::setMonth(unsigned month) {
-
-}
-
-Date& Date::setMonth(Month month) {
-
-}
-
-Date& Date::setMonth(std::string month) {
-    _month = toMonth(month);
+    _day = day;
+    setValidity();
     return *this;
 }
 
-Date& Date::setYear(unsigned year) {
+Date& Date::setMonth(unsigned month) {
+    _month = month;
+    setValidity();
+    return *this;
+}
 
+Date& Date::setMonth(Month month) {
+    return setMonth(unsigned(month));
+}
+
+Date& Date::setMonth(std::string month) {
+    return setMonth(toMonth(month));
+}
+
+Date& Date::setYear(unsigned year) {
+    _year = year;
+    setValidity();
+    return *this;
 }
 
 unsigned Date::getDay() {
@@ -95,11 +100,11 @@ bool Date::isLeap(unsigned year) {
 }
 
 void Date::setValidity() {
-    _is_valid = isYearValid(_year) and isMonthValid(_month) and isDayValid(_day, _month, _year);
+    _is_valid = isDateValid(_day, _month, _year);
 }
 
 bool Date::isDateValid(unsigned day, unsigned month, unsigned year) {
-    return isDayValid(day, month, year) and isMonthValid(month) and isYearValid(year);
+    return isYearValid(year) and isMonthValid(month) and isDayValid(day, month, year);
 }
 
 bool Date::isYearValid(unsigned year) {
@@ -134,23 +139,28 @@ unsigned Date::dayInMonth(unsigned month, unsigned year) {
             return isLeap(year) ? 29 : 28;
     }
 }
+
 std::ostream& operator<<(std::ostream& os, const Date& date){
     return date.display(os);
 }
+
 std::istream& operator>>(std::istream& is,  Date& date){
     return date.receve(is);
 }
 
+// On doit pouvoir utiliser getline
 std::istream & Date::receve(std::istream &is)  {
     is >> this->_day;
     is.ignore(1);
     is >> this->_month;
     is.ignore(1);
     is >> this->_year;
-    if(is.fail())
+    if(is.fail()) {
         this->_is_valid = false;
-    else
-        this->_is_valid = isDateValid(this->_day, this->_year, this->_month);
+        is.clear();
+        while(is.get() != '\n');
+    } else
+        setValidity();
 }
 
 

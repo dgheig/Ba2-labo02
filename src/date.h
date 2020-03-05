@@ -19,6 +19,8 @@ enum class Month {
     DECEMBER
 };
 
+// il faut discuter de l'interface et du code
+
 class Date {
     public:
         Date(unsigned day, unsigned month, unsigned year);
