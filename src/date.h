@@ -19,12 +19,12 @@ enum class Month {
     DECEMBER
 };
 
-// il faut discuter de l'interface et du code
+const unsigned DEFAULT_YEAR = 1970;
 
 class Date {
     public:
         Date(unsigned day, unsigned month, unsigned year);
-        Date(unsigned day, Month month, unsigned year);
+        Date(unsigned day = 1, Month month = Month::JANUARY, unsigned year=DEFAULT_YEAR);
 
         Date& setDay(unsigned day);
         Date& setMonth(unsigned month);
@@ -41,6 +41,7 @@ class Date {
         static bool isLeap(unsigned year);
         static unsigned dayInMonth(unsigned month, unsigned year);
 
+        operator std::string();
         bool operator==(const Date& date) const;
         bool operator!=(const Date& date) const;
         bool operator<(const Date& date) const;
