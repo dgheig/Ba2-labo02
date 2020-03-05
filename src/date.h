@@ -53,10 +53,6 @@ class Date {
         Date& operator-=(unsigned jours);
         Date& operator=(const Date& date);
 
-        // std::ostream& afficher(std::ostream& os = std::cout) const;
-        // Date operator+(unsigned jours);
-        // Date operator-(unsigned jours);
-
         Date operator++(int); // date++
         Date& operator++(); //++date
         Date& operator--(); // --date
@@ -80,11 +76,12 @@ class Date {
 };
 
 std::ostream& operator<<(std::ostream& os, const Date& date);
+std::istream& operator>>(std::istream& is, Date& date);
+
 Date operator+(Date date, unsigned jours);
 Date operator+(int jours, const Date& date);
 Date operator-(Date date, unsigned jours);
 Date operator-(int jours, const Date& date);
-std::istream& operator>>(std::istream& is, Date& date);
 
 
 #endif
