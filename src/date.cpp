@@ -34,10 +34,10 @@ std::string toString(Month month) {
 unsigned toMonth(std::string month) {
     for(size_t index = 0; index < MONTH_NAME_SIZE; ++index) {
         if(MONTH_NAME[index] == month) {
-            return index + 1;
+            return (unsigned)index + 1;
         }
     }
-    return MONTH_NAME_SIZE + 1;
+    return (unsigned)MONTH_NAME_SIZE + 1;
 }
 
 
@@ -189,9 +189,6 @@ bool Date::operator!=(const Date &date) const {
     return !(*this == date);
 }
 
-
-
-// A discuter: question de gout, pas de performance
 bool Date::operator<(const Date &date) const {
     if(this->_year < date._year){
         if(this->_month < date._month) {
@@ -202,18 +199,6 @@ bool Date::operator<(const Date &date) const {
     }
     return false;
 }
-
-// bool Date::operator<(const Date &date) const {
-//     if(this->_year < date._year) {
-//         return true;
-//     } else if(this->_month < date._month) {
-//         return true;
-//     }
-//     return this->_day < date._day;
-// }
-
-
-
 
 bool Date::operator>(const Date &date) const {
     return (date < *this);
@@ -247,42 +232,6 @@ Date& Date::operator+=(unsigned jours) {
     return *this;
 }
 
-Date& Date::operator-=(unsigned jours) {
-    while(jours) {
-        if(_day > jours) {
-            _day -= jours;
-            jours = 0;
-        } else {
-            jours -= _day;
-            if(_month == unsigned(Month::JANUARY)) {
-                _month = unsigned(Month::DECEMBER);
-                --_year;
-            } else {
-                --_month;
-            }
-            _day = dayInMonth(_month, _year);
-        }
-    }
-    return *this;
-}
-
-
-Date operator+(Date date, unsigned jours) {
-    return date += jours;
-}
-
-Date operator+(int jours, const Date& date) {
-    return date + jours;
-}
-
-Date operator-(Date date, unsigned jours) {
-    return date -= jours;
-}
-
-Date operator-(int jours, const Date& date) {
-    return date - jours;
-}
-// Il y a quand meme modification de l'objet comme ça, il faut passer par += et -= et définir le + et - en externe
 // Date Date::operator+(unsigned jours){
 //     if(this->_is_valid){
 //         while(jours > 0){
@@ -303,6 +252,25 @@ Date operator-(int jours, const Date& date) {
 //     }
 //     return *this;
 // }
+
+Date& Date::operator-=(unsigned jours) {
+    while(jours) {
+        if(_day > jours) {
+            _day -= jours;
+            jours = 0;
+        } else {
+            jours -= _day;
+            if(_month == unsigned(Month::JANUARY)) {
+                _month = unsigned(Month::DECEMBER);
+                --_year;
+            } else {
+                --_month;
+            }
+            _day = dayInMonth(_month, _year);
+        }
+    }
+    return *this;
+}
 
 // Date Date::operator-(unsigned jours)  {
 //     if(this->_is_valid){
@@ -325,19 +293,24 @@ Date operator-(int jours, const Date& date) {
 //     return *this;
 // }
 
+Date operator+(Date date, unsigned jours) {
+    return date += jours;
+}
+
+Date operator+(int jours, const Date& date) {
+    return date + jours;
+}
+
+Date operator-(Date date, unsigned jours) {
+    return date -= jours;
+}
+
+Date operator-(int jours, const Date& date) {
+    return date - jours;
+}
+
 Date & Date::operator++() {
     return *this += 1;
-    // if (this->_day + 1 <= dayInMonth(this->_month, this->_year)){
-    //     this->_day += 1;
-    // } else if(this->_month == (unsigned)Month::DECEMBER) {
-    //     this->_year  += 1;
-    //     this->_month = (unsigned)Month::JANUARY;
-    //     this->_day   = 1;
-    // } else {
-    //     this->_month += 1;
-    //     this->_day   =  1;
-    // }
-    // return *this;
 }
 
 Date Date::operator++(int) {
@@ -345,17 +318,4 @@ Date Date::operator++(int) {
     Date temp = *this;
     ++*this;
     return temp;
-
-    // Date temp = *this;
-    // if (this->_day + 1 <= dayInMonth(this->_month, this->_year)){
-    //     this->_day += 1;
-    // } else if(this->_month == (unsigned)Month::DECEMBER) {
-    //     this->_year  += 1;
-    //     this->_month = (unsigned)Month::JANUARY;
-    //     this->_day   = 1;
-    // } else {
-    //     this->_month += 1;
-    //     this->_day   =  1;
-    // }
-    // return temp;
 }
