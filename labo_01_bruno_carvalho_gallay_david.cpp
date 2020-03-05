@@ -24,7 +24,10 @@ using namespace std;
 int main() {
 
     Date date(12,3,1980);
-    cout << date;
+    cout << date << endl;
+    Date date2 = date + 40;
+    cout << date2.isValid() << endl;
+    cout << date2 << endl;
 
 
     cout << "Please, press <ENTER> to end the program" << endl;

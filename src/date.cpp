@@ -127,6 +127,10 @@ bool Date::isDayValid(unsigned day, unsigned month, unsigned year) {
     return 0 < day and day <= dayInMonth(month, year);
 }
 
+bool Date::isValid() {
+    return _is_valid;
+}
+
 unsigned Date::dayInMonth(unsigned month, unsigned year) {
     switch ((Month)month) {
         case Month::JANUARY:
@@ -154,11 +158,11 @@ std::ostream& operator<<(std::ostream& os, const Date& date){
 }
 
 std::istream& operator>>(std::istream& is,  Date& date){
-    return date.receve(is);
+    return date.receive(is);
 }
 
 // On doit pouvoir utiliser getline
-std::istream & Date::receve(std::istream &is)  {
+std::istream & Date::receive(std::istream &is)  {
     is >> _day;
     is.ignore(1);
     is >> _month;
@@ -221,7 +225,7 @@ bool Date::operator>=(const Date &date) const {
 }
 
 Date& Date::operator+=(unsigned jours) {
-    if(_is_valid)
+    if(!isValid())
         return *this;
 
     while(jours) {

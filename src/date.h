@@ -24,7 +24,7 @@ const unsigned DEFAULT_YEAR = 1970;
 class Date {
     public:
         Date(unsigned day, unsigned month, unsigned year);
-        Date(unsigned day = 1, Month month = Month::JANUARY, unsigned year=DEFAULT_YEAR);
+        Date(unsigned day = 1, Month month = Month::JANUARY, unsigned year = DEFAULT_YEAR);
 
         Date& setDay(unsigned day);
         Date& setMonth(unsigned month);
@@ -37,6 +37,7 @@ class Date {
         std::string getMonthString();
         Month getMonthEnum();
         unsigned getYear();
+        bool isValid();
 
         static bool isLeap(unsigned year);
         static unsigned dayInMonth(unsigned month, unsigned year);
@@ -53,12 +54,12 @@ class Date {
         Date& operator-=(unsigned jours);
         Date& operator=(const Date& date);
 
-        Date operator++(int); // date++
         Date& operator++(); //++date
+        Date operator++(int); // date++
         Date& operator--(); // --date
         Date operator--(int); // date--
         std::ostream& display(std::ostream& os = std::cout) const;
-        std::istream& receve(std::istream& is = std::cin);
+        std::istream& receive(std::istream& is = std::cin);
 
 
     private:
