@@ -1,5 +1,45 @@
 #include "date.h"
 
+const char* const MONTH_NAME[] = {
+    "JANUARY",
+    "FEBRUARY",
+    "MARCH",
+    "APRIL",
+    "MAY",
+    "JUNE",
+    "JULY",
+    "AUGUST",
+    "SEPTEMBER",
+    "OCTOBER",
+    "NOVEMBER",
+    "DECEMBER"
+};
+
+size_t MONTH_NAME_SIZE = 12;
+
+std::string monthToString(unsigned month) {
+    size_t index = month - 1;
+    if(index < MONTH_NAME_SIZE)
+        return MONTH_NAME[index];
+    return "undefined";
+}
+
+std::string toString(Month month) {
+    size_t index = int(month) - 1;
+    if(index < MONTH_NAME_SIZE)
+        return MONTH_NAME[index];
+    return "undefined";
+}
+
+unsigned toMonth(std::string month) {
+    for(size_t index = 0; index < MONTH_NAME_SIZE; ++index) {
+        if(MONTH_NAME[index] == month) {
+            return index + 1;
+        }
+    }
+    return MONTH_NAME_SIZE + 1;
+}
+
 
 Date::Date(unsigned day, unsigned month, unsigned year) {
 
@@ -22,7 +62,8 @@ Date& Date::setMonth(Month month) {
 }
 
 Date& Date::setMonth(std::string month) {
-
+    _month = toMonth(month);
+    return *this;
 }
 
 Date& Date::setYear(unsigned year) {
@@ -38,7 +79,7 @@ unsigned Date::getMonthNo() {
 }
 
 std::string Date::getMonthString() {
-
+    return monthToString(_month);
 }
 
 Month Date::getMonthEnum() {
@@ -49,13 +90,12 @@ unsigned Date::getYear() {
     return _year;
 }
 
-
 bool Date::isLeap(unsigned year) {
     return (!(year % 4) and year % 100) or !(year % 400);
 }
 
 void Date::setValidity() {
-
+    _is_valid = isYearValid(_year) and isMonthValid(_month) and isDayValid(_day, _month, _year);
 }
 
 bool Date::isYearValid(unsigned year) {
@@ -63,7 +103,7 @@ bool Date::isYearValid(unsigned year) {
 }
 
 bool Date::isMonthValid(unsigned month) {
-    return 0 < month and month < 13;
+    return unsigned(Month::JANUARY) <= month and month <= unsigned(Month::DECEMBER);
 }
 
 bool Date::isDayValid(unsigned day, unsigned month, unsigned year) {
@@ -115,8 +155,8 @@ bool Date::operator!=(const Date &date) const {
 
 bool Date::operator<(const Date &date) const {
     if(this->_year < date._year){
-        if(this->_month < date._month){
-            if(this->_day < date._day){
+        if(this->_month < date._month) {
+            if(this->_day < date._day) {
                 return true;
             }
         }
@@ -125,6 +165,7 @@ bool Date::operator<(const Date &date) const {
 }
 
 bool Date::operator>(const Date &date) const {
+
     if(this->_year > date._year){
         if(this->_month > date._month){
             if(this->_day > date._day){
@@ -133,6 +174,7 @@ bool Date::operator>(const Date &date) const {
         }
     }
     return false;
+    // return !(*this < date or *this == date);
 }
 
 bool Date::operator<=(const Date &date) const {
@@ -143,10 +185,57 @@ bool Date::operator>=(const Date &date) const {
     return !(*this < date);
 }
 
-Date Date::operator+(int jours) const {
-
+Date& Date::operator+=(unsigned jours) {
+    while(jours) {
+        unsigned delta = dayInMonth(_month, _year) - _day;
+        if(delta > jours) {
+            _day += jours;
+            jours = 0;
+        } else {
+            jours -= delta;
+            _day = 1;
+            if(_month == unsigned(Month::DECEMBER)) {
+                _month == 1;
+                _year += 1;
+            } else {
+                _month += 1;
+            }
+        }
+    }
 }
 
-Date Date::operator-(int jours) const {
+Date& Date::operator-=(unsigned jours) {
+    while(jours) {
+        unsigned delta = dayInMonth(_month, _year) - _day;
+        if(_day > jours) {
+            _day -= jours;
+            jours = 0;
+        } else {
+            jours -= _day;
+            if(_month == unsigned(Month::JANUARY)) {
+                _month = unsigned(Month::DECEMBER);
+                _year -= 1;
+            } else {
+                _month -= 1;
+            }
+            _day = dayInMonth(_month, _year);
+        }
+    }
+}
 
+
+Date operator+(Date date, unsigned jours) {
+    return date += jours;
+}
+
+Date operator+(int jours, const Date& date) {
+    return date + jours;
+}
+
+Date operator-(Date date, unsigned jours) {
+    return date -= jours;
+}
+
+Date operator-(int jours, const Date& date) {
+    return date - jours;
 }

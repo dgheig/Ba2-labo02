@@ -38,14 +38,17 @@ class Date {
 
         static bool isLeap(unsigned year);
         static unsigned dayInMonth(unsigned month, unsigned year);
+
         bool operator==(const Date& date) const;
         bool operator!=(const Date& date) const;
         bool operator<(const Date& date) const;
         bool operator<=(const Date& date) const;
         bool operator>(const Date& date) const;
         bool operator>=(const Date& date) const;
-        Date operator+(int jours) const;
-        Date operator-(int jours) const;
+
+        Date& operator+=(unsigned jours);
+        Date& operator-=(unsigned jours);
+
         std::ostream& afficher(std::ostream& os = std::cout) const;
 
     private:
@@ -62,6 +65,10 @@ class Date {
 };
 
 std::ostream& operator<<(std::ostream& os, const Date& date);
+Date operator+(Date date, unsigned jours);
+Date operator+(int jours, const Date& date);
+Date operator-(Date date, unsigned jours);
+Date operator-(int jours, const Date& date);
 
 
 #endif
