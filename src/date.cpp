@@ -282,7 +282,7 @@ Date operator-(int jours, const Date& date) {
     return date - jours;
 }
 
-Date & Date::operator++() {
+Date& Date::operator++() {
     return *this += 1;
 }
 
