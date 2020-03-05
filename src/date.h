@@ -51,7 +51,7 @@ class Date {
 
         Date& operator+=(unsigned jours);
         Date& operator-=(unsigned jours);
-        Date operator=(const Date& date);
+        Date& operator=(const Date& date);
 
         // std::ostream& afficher(std::ostream& os = std::cout) const;
         // Date operator+(unsigned jours);

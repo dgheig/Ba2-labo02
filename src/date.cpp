@@ -176,7 +176,7 @@ std::istream & Date::receve(std::istream &is)  {
 
 std::ostream & Date::display(std::ostream &os) const{
     if(_is_valid)
-        return os << _day  << "." << _month << "." << _year;
+        return os << std::setfill('0') << std::setw(2) << _day  << "." << _month << "." << _year;
     return os << "invalide";
 
 }
@@ -291,9 +291,10 @@ Date Date::operator++(int) {
     return temp;
 }
 
-Date Date::operator=(const Date &date) {
+Date& Date::operator=(const Date &date) {
     _day   = date._day;
     _month = date._month;
     _year  = date._year;
     setValidity();
+    return *this;
 }
