@@ -151,13 +151,13 @@ std::istream& operator>>(std::istream& is,  Date& date){
 
 // On doit pouvoir utiliser getline
 std::istream & Date::receve(std::istream &is)  {
-    is >> this->_day;
+    is >> _day;
     is.ignore(1);
-    is >> this->_month;
+    is >> _month;
     is.ignore(1);
-    is >> this->_year;
+    is >> _year;
     if(is.fail()) {
-        this->_is_valid = false;
+        _is_valid = false;
         is.clear();
         while(is.get() != '\n');
     } else
@@ -168,16 +168,16 @@ std::istream & Date::receve(std::istream &is)  {
 
 
 std::ostream & Date::display(std::ostream &os) const{
-    if(this->_is_valid)
+    if(_is_valid)
         return os << _day  << "." << _month << "." << _year;
     return os << "invalide";
 
 }
 
 bool Date::operator==(const Date &date) const {
-    if(this->_year == date._year){
-        if(this->_month == date._month){
-            if(this->_day == date._day){
+    if(_year == date._year){
+        if(_month == date._month){
+            if(_day == date._day){
                 return true;
             }
         }
@@ -190,9 +190,9 @@ bool Date::operator!=(const Date &date) const {
 }
 
 bool Date::operator<(const Date &date) const {
-    if(this->_year < date._year){
-        if(this->_month < date._month) {
-            if(this->_day < date._day) {
+    if(_year < date._year){
+        if(_month < date._month) {
+            if(_day < date._day) {
                 return true;
             }
         }
@@ -213,13 +213,16 @@ bool Date::operator>=(const Date &date) const {
 }
 
 Date& Date::operator+=(unsigned jours) {
+    if(_is_valid)
+        return *this;
+
     while(jours) {
-        unsigned delta = dayInMonth(_month, _year) - _day;
-        if(delta > jours) {
+        unsigned nbDays = dayInMonth(_month, _year) - _day;
+        if(nbDays > jours) {
             _day += jours;
             jours = 0;
         } else {
-            jours -= delta;
+            jours -= nbDays;
             _day = 1;
             if(_month == unsigned(Month::DECEMBER)) {
                 _month = 1;
@@ -232,35 +235,17 @@ Date& Date::operator+=(unsigned jours) {
     return *this;
 }
 
-// Date Date::operator+(unsigned jours){
-//     if(this->_is_valid){
-//         while(jours > 0){
-//             unsigned nbDays = this->dayInMonth(this->_month, this->_year);
-//             if(this->_day + jours <= nbDays){
-//                 this->_day += jours;
-//                 break;
-//             } else {
-//                 if(this->_month == (unsigned)Month::DECEMBER){
-//                     this->_year++;
-//                     this->_month = (unsigned)Month::JANUARY;
-//                 } else {
-//                     this->_month += 1;
-//                 }
-//                 jours -= nbDays + 1 - this->_day;
-//             }
-//         }
-//     }
-//     return *this;
-// }
-
 Date& Date::operator-=(unsigned jours) {
-    while(jours) {
-        if(_day > jours) {
+    if(_is_valid)
+        return *this;
+
+    while (jours) {
+        if (_day > jours) {
             _day -= jours;
             jours = 0;
         } else {
             jours -= _day;
-            if(_month == unsigned(Month::JANUARY)) {
+            if (_month == unsigned(Month::JANUARY)) {
                 _month = unsigned(Month::DECEMBER);
                 --_year;
             } else {
@@ -270,28 +255,8 @@ Date& Date::operator-=(unsigned jours) {
         }
     }
     return *this;
-}
 
-// Date Date::operator-(unsigned jours)  {
-//     if(this->_is_valid){
-//         while(jours > 0){
-//             if(this->_day - jours > 1){
-//                 this->_day -= jours;
-//                 break;
-//             } else {
-//                 if(this->_month == (unsigned)Month::JANUARY){
-//                     this->_year--;
-//                     this->_month = (unsigned)Month::DECEMBER;
-//                 } else {
-//                     this->_month -= 1;
-//                 }
-//                 jours -= this->_day;
-//                 this->_day = this->dayInMonth(this->_month, this->_year);
-//             }
-//         }
-//     }
-//     return *this;
-// }
+}
 
 Date operator+(Date date, unsigned jours) {
     return date += jours;
@@ -314,8 +279,14 @@ Date & Date::operator++() {
 }
 
 Date Date::operator++(int) {
-
     Date temp = *this;
     ++*this;
     return temp;
+}
+
+Date Date::operator=(const Date &date) {
+    _day   = date._day;
+    _month = date._month;
+    _year  = date._year;
+    setValidity();
 }
