@@ -41,11 +41,11 @@ unsigned toMonth(std::string month) {
 }
 
 
-Date::Date(unsigned day, unsigned month, unsigned year) {
-
+Date::Date(unsigned day, unsigned month, unsigned year): _day(day), _month(month), _year(year) {
+    setValidity();
 }
 
-Date::Date(unsigned day, Month month, unsigned year) {
+Date::Date(unsigned day, Month month, unsigned year): Date(_day, unsigned(month), _year) {
 
 }
 
@@ -98,6 +98,10 @@ void Date::setValidity() {
     _is_valid = isYearValid(_year) and isMonthValid(_month) and isDayValid(_day, _month, _year);
 }
 
+bool Date::isDateValid(unsigned day, unsigned month, unsigned year) {
+    return isDayValid(day, month, year) and isMonthValid(month) and isYearValid(year);
+}
+
 bool Date::isYearValid(unsigned year) {
     return true;
 }
@@ -129,13 +133,32 @@ unsigned Date::dayInMonth(unsigned month, unsigned year) {
         case Month::FEBRUARY:
             return isLeap(year) ? 29 : 28;
     }
-    return 31;
 }
 std::ostream& operator<<(std::ostream& os, const Date& date){
-    return date.afficher(os);
+    return date.display(os);
 }
-std::ostream & Date::afficher(std::ostream &os) const{
-    return os << _day  << "." << _month << "." << _year;
+std::istream& operator>>(std::istream& is,  Date& date){
+    return date.receve(is);
+}
+
+std::istream & Date::receve(std::istream &is)  {
+    is >> this->_day;
+    is.ignore(1);
+    is >> this->_month;
+    is.ignore(1);
+    is >> this->_year;
+    if(is.fail())
+        this->_is_valid = false;
+    else
+        this->_is_valid = isDateValid(this->_day, this->_year, this->_month);
+}
+
+
+std::ostream & Date::display(std::ostream &os) const{
+    if(this->_is_valid)
+        return os << _day  << "." << _month << "." << _year;
+    return os << "invalide";
+
 }
 
 bool Date::operator==(const Date &date) const {
@@ -153,6 +176,9 @@ bool Date::operator!=(const Date &date) const {
     return !(*this == date);
 }
 
+
+
+// A discuter: question de gout, pas de performance
 bool Date::operator<(const Date &date) const {
     if(this->_year < date._year){
         if(this->_month < date._month) {
@@ -164,17 +190,20 @@ bool Date::operator<(const Date &date) const {
     return false;
 }
 
-bool Date::operator>(const Date &date) const {
+// bool Date::operator<(const Date &date) const {
+//     if(this->_year < date._year) {
+//         return true;
+//     } else if(this->_month < date._month) {
+//         return true;
+//     }
+//     return this->_day < date._day;
+// }
 
-    if(this->_year > date._year){
-        if(this->_month > date._month){
-            if(this->_day > date._day){
-                return true;
-            }
-        }
-    }
-    return false;
-    // return !(*this < date or *this == date);
+
+
+
+bool Date::operator>(const Date &date) const {
+    return (date < *this);
 }
 
 bool Date::operator<=(const Date &date) const {
@@ -238,4 +267,81 @@ Date operator-(Date date, unsigned jours) {
 
 Date operator-(int jours, const Date& date) {
     return date - jours;
+}
+// Il y a quand meme modification de l'objet comme ça, il faut passer par += et -= et définir le + et - en externe
+// Date Date::operator+(unsigned jours){
+//     if(this->_is_valid){
+//         while(jours > 0){
+//             unsigned nbDays = this->dayInMonth(this->_month, this->_year);
+//             if(this->_day + jours <= nbDays){
+//                 this->_day += jours;
+//                 break;
+//             } else {
+//                 if(this->_month == (unsigned)Month::DECEMBER){
+//                     this->_year++;
+//                     this->_month = (unsigned)Month::JANUARY;
+//                 } else {
+//                     this->_month += 1;
+//                 }
+//                 jours -= nbDays + 1 - this->_day;
+//             }
+//         }
+//     }
+//     return *this;
+// }
+
+// Date Date::operator-(unsigned jours)  {
+//     if(this->_is_valid){
+//         while(jours > 0){
+//             if(this->_day - jours > 1){
+//                 this->_day -= jours;
+//                 break;
+//             } else {
+//                 if(this->_month == (unsigned)Month::JANUARY){
+//                     this->_year--;
+//                     this->_month = (unsigned)Month::DECEMBER;
+//                 } else {
+//                     this->_month -= 1;
+//                 }
+//                 jours -= this->_day;
+//                 this->_day = this->dayInMonth(this->_month, this->_year);
+//             }
+//         }
+//     }
+//     return *this;
+// }
+
+Date & Date::operator++() {
+    return *this += 1;
+    // if (this->_day + 1 <= dayInMonth(this->_month, this->_year)){
+    //     this->_day += 1;
+    // } else if(this->_month == (unsigned)Month::DECEMBER) {
+    //     this->_year  += 1;
+    //     this->_month = (unsigned)Month::JANUARY;
+    //     this->_day   = 1;
+    // } else {
+    //     this->_month += 1;
+    //     this->_day   =  1;
+    // }
+    // return *this;
+}
+
+Date Date::operator++(int) {
+
+    Date temp = *this;
+    ++*this;
+    return temp;
+
+    // Date temp = *this;
+    // if (this->_day + 1 <= dayInMonth(this->_month, this->_year)){
+    //     this->_day += 1;
+    // } else if(this->_month == (unsigned)Month::DECEMBER) {
+    //     this->_year  += 1;
+    //     this->_month = (unsigned)Month::JANUARY;
+    //     this->_day   = 1;
+    // } else {
+    //     this->_month += 1;
+    //     this->_day   =  1;
+    // }
+    // return temp;
 }

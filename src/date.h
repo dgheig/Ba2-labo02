@@ -49,10 +49,21 @@ class Date {
         Date& operator+=(unsigned jours);
         Date& operator-=(unsigned jours);
 
-        std::ostream& afficher(std::ostream& os = std::cout) const;
+        // std::ostream& afficher(std::ostream& os = std::cout) const;
+        // Date operator+(unsigned jours);
+        // Date operator-(unsigned jours);
+
+        Date operator++(int); // date++
+        Date& operator++(); //++date
+        Date& operator--(); // --date
+        Date operator--(int); // date--
+        std::ostream& display(std::ostream& os = std::cout) const;
+        std::istream& receve(std::istream& is = std::cin);
+
 
     private:
         void setValidity();
+        static bool isDateValid(unsigned day, unsigned month, unsigned year);
         static bool isYearValid(unsigned year);
         static bool isMonthValid(unsigned month);
         static bool isDayValid(unsigned day, unsigned month, unsigned year);
@@ -69,6 +80,7 @@ Date operator+(Date date, unsigned jours);
 Date operator+(int jours, const Date& date);
 Date operator-(Date date, unsigned jours);
 Date operator-(int jours, const Date& date);
+std::istream& operator>>(std::istream& is, Date& date);
 
 
 #endif
