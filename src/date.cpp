@@ -292,6 +292,16 @@ Date Date::operator++(int) {
     return temp;
 }
 
+Date& Date::operator--() {
+    return *this -= 1;
+}
+
+Date Date::operator--(int) {
+    Date temp = *this;
+    --*this;
+    return temp;
+}
+
 Date& Date::operator=(const Date &date) {
     _day   = date._day;
     _month = date._month;
