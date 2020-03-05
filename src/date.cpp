@@ -1,9 +1,6 @@
 #include "date.h"
-#include <sstream>
-#include <iomanip>
 
 const char* const MONTH_NAME[] = {
-    "UNDEFINED",
     "JANUARY",
     "FEBRUARY",
     "MARCH",
@@ -18,26 +15,29 @@ const char* const MONTH_NAME[] = {
     "DECEMBER"
 };
 
-size_t MONTH_NAME_SIZE = sizeof(MONTH_NAME);
-const unsigned REF_YEAR = 1582;
+size_t MONTH_NAME_SIZE = 12;
 
 std::string monthToString(unsigned month) {
-    if(month < MONTH_NAME_SIZE)
-        return MONTH_NAME[month];
-    return MONTH_NAME[0];
+    size_t index = month - 1;
+    if(index < MONTH_NAME_SIZE)
+        return MONTH_NAME[index];
+    return "undefined";
 }
 
 std::string toString(Month month) {
-    return monthToString(unsigned(month));
+    size_t index = int(month) - 1;
+    if(index < MONTH_NAME_SIZE)
+        return MONTH_NAME[index];
+    return "undefined";
 }
 
 unsigned toMonth(std::string month) {
     for(size_t index = 0; index < MONTH_NAME_SIZE; ++index) {
         if(MONTH_NAME[index] == month) {
-            return (unsigned)index;
+            return (unsigned)index + 1;
         }
     }
-    return 0;
+    return (unsigned)MONTH_NAME_SIZE + 1;
 }
 
 
@@ -47,14 +47,6 @@ Date::Date(unsigned day, unsigned month, unsigned year): _day(day), _month(month
 
 Date::Date(unsigned day, Month month, unsigned year): Date(day, unsigned(month), year) {
 
-}
-
-
-Date::operator std::string() {
-
-    std::stringstream stream;
-    stream << *this;
-    return stream.str();
 }
 
 Date& Date::setDay(unsigned day) {
@@ -116,7 +108,7 @@ bool Date::isDateValid(unsigned day, unsigned month, unsigned year) {
 }
 
 bool Date::isYearValid(unsigned year) {
-    return year >= REF_YEAR;
+    return year > 1970;
 }
 
 bool Date::isMonthValid(unsigned month) {
@@ -177,8 +169,8 @@ std::istream & Date::receve(std::istream &is)  {
 
 std::ostream & Date::display(std::ostream &os) const{
     if(_is_valid)
-        return os << std::setfill('0') << std::setw(2) << _day  << "." << _month << "." << _year;
-    return os << "invalide";
+        return os << _day  << "." << _month << "." << _year;
+    return os << "undifined";
 
 }
 
@@ -297,5 +289,4 @@ Date& Date::operator=(const Date &date) {
     _month = date._month;
     _year  = date._year;
     setValidity();
-    return *this;
 }

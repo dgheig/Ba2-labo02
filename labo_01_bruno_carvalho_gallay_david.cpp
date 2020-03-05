@@ -23,8 +23,8 @@ using namespace std;
 
 int main() {
 
-    Date date();
-
+    Date date(12,3,1980);
+    cout << date;
 
 
     cout << "Please, press <ENTER> to end the program" << endl;
