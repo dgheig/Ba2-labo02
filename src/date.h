@@ -44,7 +44,7 @@ class Date {
         bool operator<=(const Date& date) const;
         bool operator>(const Date& date) const;
         bool operator>=(const Date& date) const;
-        Date operator+(int jours) const;
+        Date operator+(int jours);
         Date operator-(int jours) const;
         std::ostream& display(std::ostream& os = std::cout) const;
         std::istream& receve(std::istream& is = std::cin);

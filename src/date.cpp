@@ -167,10 +167,30 @@ bool Date::operator>=(const Date &date) const {
     return !(*this < date);
 }
 
-Date Date::operator+(int jours) const {
-
+Date Date::operator+(int jours){
+    if(this->_is_valid){
+        while(jours > 0){
+            unsigned nbDays = this->dayInMonth(this->_month);
+            if(this->_day + jours <= nbDays){
+                this->_day += jours;
+                break;
+            } else {
+                if(this->_month == 12){
+                    this->_year++;
+                    this->_month = 1;
+                } else {
+                    this->_month += 1;
+                }
+                jours -= nbDays + 1 - this->_day;
+            }
+        }
+    }
+    return *this;
 }
 
 Date Date::operator-(int jours) const {
+    if(this->_is_valid){
 
+    }
+    return *this;
 }
