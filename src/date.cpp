@@ -93,7 +93,6 @@ unsigned Date::dayInMonth(unsigned month, unsigned year) {
         case Month::FEBRUARY:
             return isLeap(year) ? 29 : 28;
     }
-    return 31;
 }
 std::ostream& operator<<(std::ostream& os, const Date& date){
     return date.display(os);
@@ -158,7 +157,7 @@ bool Date::operator>=(const Date &date) const {
     return !(*this < date);
 }
 
-Date Date::operator+(int jours){
+Date Date::operator+(unsigned jours){
     if(this->_is_valid){
         while(jours > 0){
             unsigned nbDays = this->dayInMonth(this->_month, this->_year);
@@ -166,9 +165,9 @@ Date Date::operator+(int jours){
                 this->_day += jours;
                 break;
             } else {
-                if(this->_month == 12){
+                if(this->_month == (unsigned)Month::DECEMBER){
                     this->_year++;
-                    this->_month = 1;
+                    this->_month = (unsigned)Month::JANUARY;
                 } else {
                     this->_month += 1;
                 }
@@ -179,9 +178,52 @@ Date Date::operator+(int jours){
     return *this;
 }
 
-Date Date::operator-(int jours) const {
+Date Date::operator-(unsigned jours)  {
     if(this->_is_valid){
-
+        while(jours > 0){
+            if(this->_day - jours > 1){
+                this->_day -= jours;
+                break;
+            } else {
+                if(this->_month == (unsigned)Month::JANUARY){
+                    this->_year--;
+                    this->_month = (unsigned)Month::DECEMBER;
+                } else {
+                    this->_month -= 1;
+                }
+                jours -= this->_day;
+                this->_day = this->dayInMonth(this->_month, this->_year);
+            }
+        }
     }
     return *this;
+}
+
+Date & Date::operator++() {
+    if (this->_day + 1 <= dayInMonth(this->_month, this->_year)){
+        this->_day += 1;
+    } else if(this->_month == (unsigned)Month::DECEMBER) {
+        this->_year  += 1;
+        this->_month = (unsigned)Month::JANUARY;
+        this->_day   = 1;
+    } else {
+        this->_month += 1;
+        this->_day   =  1;
+    }
+    return *this;
+}
+
+Date Date::operator++(int) {
+    Date temp = *this;
+    if (this->_day + 1 <= dayInMonth(this->_month, this->_year)){
+        this->_day += 1;
+    } else if(this->_month == (unsigned)Month::DECEMBER) {
+        this->_year  += 1;
+        this->_month = (unsigned)Month::JANUARY;
+        this->_day   = 1;
+    } else {
+        this->_month += 1;
+        this->_day   =  1;
+    }
+    return temp;
 }
