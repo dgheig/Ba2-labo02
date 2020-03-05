@@ -138,29 +138,20 @@ bool Date::operator!=(const Date &date) const {
 }
 
 bool Date::operator<(const Date &date) const {
-    if(this->_year < date._year){
-        if(this->_month < date._month){
-            if(this->_day < date._day){
-                return true;
-            }
-        }
+    if(this->_year < date._year) {
+        return true;
+    } else if(this->_month < date._month) {
+        return true;
     }
-    return false;
+    return this->_day < date._day;
 }
 
 bool Date::operator>(const Date &date) const {
-    if(this->_year > date._year){
-        if(this->_month > date._month){
-            if(this->_day > date._day){
-                return true;
-            }
-        }
-    }
-    return false;
+    return (date < *this);
 }
 
 bool Date::operator<=(const Date &date) const {
-    return !(*this > date);
+    return !(date < *this);
 }
 
 bool Date::operator>=(const Date &date) const {
@@ -170,7 +161,7 @@ bool Date::operator>=(const Date &date) const {
 Date Date::operator+(int jours){
     if(this->_is_valid){
         while(jours > 0){
-            unsigned nbDays = this->dayInMonth(this->_month);
+            unsigned nbDays = this->dayInMonth(this->_month, this->_year);
             if(this->_day + jours <= nbDays){
                 this->_day += jours;
                 break;

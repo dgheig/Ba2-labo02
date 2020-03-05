@@ -15,12 +15,16 @@ Compiler    : MinGW-g++ 6.3.0 and g++ 7.4.0
 -----------------------------------------------------------------------------------*/
 #include <iostream>
 #include <cstdlib>
+#include "src/date.h"
 
 using namespace std;
 
 #define WAIT_ENTER while(cin.get()!='\n')
 
 int main() {
+
+    Date date();
+
 
 
     cout << "Please, press <ENTER> to end the program" << endl;
