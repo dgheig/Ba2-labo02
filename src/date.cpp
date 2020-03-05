@@ -45,7 +45,7 @@ Date::Date(unsigned day, unsigned month, unsigned year): _day(day), _month(month
     setValidity();
 }
 
-Date::Date(unsigned day, Month month, unsigned year): Date(_day, unsigned(month), _year) {
+Date::Date(unsigned day, Month month, unsigned year): Date(day, unsigned(month), year) {
 
 }
 
@@ -108,7 +108,7 @@ bool Date::isDateValid(unsigned day, unsigned month, unsigned year) {
 }
 
 bool Date::isYearValid(unsigned year) {
-    return true;
+    return year > 1970;
 }
 
 bool Date::isMonthValid(unsigned month) {
@@ -138,6 +138,7 @@ unsigned Date::dayInMonth(unsigned month, unsigned year) {
         case Month::FEBRUARY:
             return isLeap(year) ? 29 : 28;
     }
+    return -1;
 }
 
 std::ostream& operator<<(std::ostream& os, const Date& date){
@@ -161,6 +162,8 @@ std::istream & Date::receve(std::istream &is)  {
         while(is.get() != '\n');
     } else
         setValidity();
+
+    return is;
 }
 
 
@@ -234,18 +237,18 @@ Date& Date::operator+=(unsigned jours) {
             jours -= delta;
             _day = 1;
             if(_month == unsigned(Month::DECEMBER)) {
-                _month == 1;
-                _year += 1;
+                _month = 1;
+                ++_year;
             } else {
-                _month += 1;
+                ++_month;
             }
         }
     }
+    return *this;
 }
 
 Date& Date::operator-=(unsigned jours) {
     while(jours) {
-        unsigned delta = dayInMonth(_month, _year) - _day;
         if(_day > jours) {
             _day -= jours;
             jours = 0;
@@ -253,13 +256,14 @@ Date& Date::operator-=(unsigned jours) {
             jours -= _day;
             if(_month == unsigned(Month::JANUARY)) {
                 _month = unsigned(Month::DECEMBER);
-                _year -= 1;
+                --_year;
             } else {
-                _month -= 1;
+                --_month;
             }
             _day = dayInMonth(_month, _year);
         }
     }
+    return *this;
 }
 
 

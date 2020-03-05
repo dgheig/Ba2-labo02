@@ -71,9 +71,9 @@ class Date {
         static bool isDayValid(unsigned day, unsigned month, unsigned year);
 
         bool _is_valid;
-        unsigned _year;
-        unsigned _month;
         unsigned _day;
+        unsigned _month;
+        unsigned _year;
 
 };
 
