@@ -1,13 +1,12 @@
 /*
 -----------------------------------------------------------------------------------
 Laboratory  : labo_02
-File        : labo_02_comte_bruno_gallay_david.cpp
+File        : labo_02_carvalho_bruno_gallay_david.cpp
 Author(s)   : Bruno carvalho et David Gallay
-Date        : 20.02.2020
+Date        : 8.03.2020
 
 Purpose     : Prove the good working of classes defined in others files.
 Remark(s)   :
-
                 There is the github repository:
                 https://github.com/dgheig/Ba2-labo02
 

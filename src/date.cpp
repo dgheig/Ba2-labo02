@@ -1,3 +1,15 @@
+/*
+-----------------------------------------------------------------------------------
+Laboratoire : labo_02
+Fichier     : date.cpp
+Auteur(s)   : Bruno Carvalho et David Gallay
+Date        : 8.03.2020
+
+But         : Function definition for header date.h
+Remarque(s) :
+Compilateur : MinGW-g++ 6.3.0 and g++ 7.4.0
+-----------------------------------------------------------------------------------*/
+
 #include "date.h"
 #include <sstream>
 #include <iomanip>
@@ -163,17 +175,26 @@ std::istream& operator>>(std::istream& is,  Date& date){
 
 // On doit pouvoir utiliser getline
 std::istream & Date::receive(std::istream &is)  {
-    is >> _day;
-    is.ignore(1);
-    is >> _month;
-    is.ignore(1);
-    is >> _year;
+    const char DELIMITER = '.';
+    char first_delimiter;
+    char second_delimiter;
+
+    is >> _day
+       >> first_delimiter
+       >> _month
+       >> second_delimiter
+       >> _year;
+
     if(is.fail()) {
         _is_valid = false;
         is.clear();
         while(is.get() != '\n');
-    } else
+    } else if (first_delimiter != DELIMITER or second_delimiter != DELIMITER){
+        _is_valid = false;  // Si la date est juste mais avec les mauvais delimiter, il suffira de setDay(getDay()),
+                            // ce n'est donc pas une bonne façon de gérer le mauvais format
+    } else {
         setValidity();
+    }
 
     return is;
 }
