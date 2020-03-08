@@ -229,7 +229,7 @@ Date& Date::operator+=(unsigned jours) {
         return *this;
 
     while(jours) {
-        unsigned nbDays = dayInMonth(_month, _year) - _day;
+        unsigned nbDays = dayInMonth(_month, _year) - _day + 1;
         if(nbDays > jours) {
             _day += jours;
             jours = 0;
@@ -248,7 +248,7 @@ Date& Date::operator+=(unsigned jours) {
 }
 
 Date& Date::operator-=(unsigned jours) {
-    if(_is_valid)
+    if(!isValid())
         return *this;
 
     while (jours) {
@@ -282,10 +282,6 @@ Date operator-(Date date, unsigned jours) {
     return date -= jours;
 }
 
-Date operator-(int jours, const Date& date) {
-    return date - jours;
-}
-
 Date& Date::operator++() {
     return *this += 1;
 }
@@ -310,6 +306,14 @@ Date& Date::operator=(const Date &date) {
     _day   = date._day;
     _month = date._month;
     _year  = date._year;
+
+    /*
+        safer than copying _is_valid:
+        e.g: Suppose that a class inherits from Date and overrides
+        functions which leads to change the behaviour of _is_valid.
+
+        To ensure the integrity of the object, we use setValidity.
+    */
     setValidity();
     return *this;
 }

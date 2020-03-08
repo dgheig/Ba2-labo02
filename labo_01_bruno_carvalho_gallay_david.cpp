@@ -29,6 +29,16 @@ int main() {
     cout << date2.isValid() << endl;
     cout << date2 << endl;
 
+    date = Date(1, 1, 2020);
+    cout << date + 1 << endl;
+    cout << date + 30 << endl;
+    cout << date + 31 << endl;
+
+    date = Date(1, 2, 2020);
+    cout << date - 1 << endl;
+    cout << date - 30 << endl;
+    cout << date - 31 << endl;
+
 
     cout << "Please, press <ENTER> to end the program" << endl;
     WAIT_ENTER;
