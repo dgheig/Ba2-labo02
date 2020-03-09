@@ -120,9 +120,6 @@ int main() {
         cout << string(date) << endl;
     }
 
-    date = Date(15, 1, 2020);
-    // cout << date - () << endl;
-
 
     cout << "Please, press <ENTER> to end the program" << endl;
     WAIT_ENTER;
