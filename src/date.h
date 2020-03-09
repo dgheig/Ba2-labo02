@@ -49,6 +49,14 @@ class Date {
          * @param month
          * @param year
          */
+        Date(unsigned day, std::string month, unsigned year);
+
+        /**
+         * @brief Create a Date
+         * @param day
+         * @param month
+         * @param year
+         */
         Date(unsigned day = 1, Month month = Month::JANUARY, unsigned year = DEFAULT_YEAR);
 
 

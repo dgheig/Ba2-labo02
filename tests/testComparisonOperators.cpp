@@ -23,7 +23,7 @@ void check(bool result, bool expected) {
     if(result != expected) {
         exit_value = EXIT_FAILURE;
         cerr << "Comparison is wrong:\n" << boolalpha
-             << "Expected: " << expected
+             << "Expected: " << expected << '\n'
              << "Got: "      << result
              << endl;
     } else {
@@ -37,24 +37,56 @@ int main() {
     Date date3(14,3,2002);
     Date date4(1,5,1980);
 
+
+    // operator<
+
     cout << date1 << " < " << date2 << endl;
     check(date1 < date2, true);
     cout << endl;
+
+
+    // operator<=
 
     cout << date3 << " <= " << date4 << endl;
     check(date3 <= date4, false);
     cout << endl;
 
+
+    // operator>
+
     cout << date1 << " > " << date2 << endl;
     check(date1 > date2, false);
     cout << endl;
+
+
+    // operator>=
 
     cout << date3 << " >= " << date4 << endl;
     check(date3 >= date4, true);
     cout << endl;
 
-    // cout << "TEST '==' OPERATOR" << endl;
-    // cout << "TEST '!=' OPERATOR" << endl;
+
+    // operator==
+
+    cout << date3 << " == " << date4 << endl;
+    check(date3 == date4, false);
+    cout << endl;
+
+    cout << date4 << " == " << date4 << endl;
+    check(date4 == date4, true);
+    cout << endl;
+
+
+    // operator!=
+    cout << date3 << " != " << date4 << endl;
+    check(date3 != date4, true);
+    cout << endl;
+
+    cout << date4 << " != " << date4 << endl;
+    check(date4 != date4, false);
+    cout << endl;
+
+
 
     if(exit_value == EXIT_SUCCESS)
         cout << "Check were successful" << endl;

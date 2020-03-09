@@ -30,7 +30,7 @@ const char* const MONTH_NAME[] = {
     "DECEMBER"
 };
 
-size_t MONTH_NAME_SIZE = sizeof(MONTH_NAME);
+size_t MONTH_NAME_SIZE = sizeof(MONTH_NAME) / sizeof(const char*);
 const unsigned REF_YEAR = 1582;
 
 std::string monthToString(unsigned month) {
@@ -55,6 +55,10 @@ unsigned convertMonth(std::string month) {
 
 Date::Date(unsigned day, unsigned month, unsigned year): _day(day), _month(month), _year(year) {
     setValidity();
+}
+
+Date::Date(unsigned day, std::string month, unsigned year): Date(day, convertMonth(month), year) {
+
 }
 
 Date::Date(unsigned day, Month month, unsigned year): Date(day, unsigned(month), year) {
