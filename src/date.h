@@ -7,7 +7,7 @@ Date        : 8.03.2020
 
 But         : Declare class Date, enum class Month and functions useful for it
 Remarque(s) :
-Compilateur : MinGW-g++ 6.3.0 and g++ 7.4.0
+Compilateur : g++ 7.4.0
 -----------------------------------------------------------------------------------*/
 
 #ifndef DATE_H
@@ -237,11 +237,13 @@ class Date {
          * @return The object date before incrementation
          */
         Date operator++(int);
+
         /**
          * @brief Pre-decrementation of an object date
          * @return The object date modified
          */
         Date& operator--();
+
         /**
          * @brief Post-decrementation of an object date
          * @return The object date before decrementation
@@ -264,6 +266,7 @@ class Date {
 
 
     private:
+
         /**
          * @brief Set validity according to inner values
          */
