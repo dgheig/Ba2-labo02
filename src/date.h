@@ -91,37 +91,37 @@ class Date {
          * @brief get day value
          * @return unsigned
          */
-        unsigned getDay();
+        unsigned getDay() const;
 
         /**
          * @brief get month value
          * @return unsigned
          */
-        unsigned getMonthNo();
+        unsigned getMonthNo() const;
 
         /**
          * @brief get month value
          * @return string
          */
-        std::string getMonthString();
+        std::string getMonthString() const;
 
         /**
          * @brief get month value
          * @return Month enum
          */
-        Month getMonthEnum();
+        Month getMonthEnum() const;
 
         /**
          * @brief get year value
          * @return unsigned
          */
-        unsigned getYear();
+        unsigned getYear() const;
 
         /**
          * @brief get a bool indicating if Date values are valid
          * @return bool
          */
-        bool isValid();
+        bool isValid() const;
 
 
         /**
@@ -145,14 +145,14 @@ class Date {
         /**
          * @brief Compare two dates
          * @param date
-         * @return True if the two dates are egual
+         * @return True if the two dates are equal
          */
         bool operator==(const Date& date) const;
 
         /**
          * @brief Compare two dates
          * @param date
-         * @return True if the two dates are inegual
+         * @return True if the two dates are inequal
          */
         bool operator!=(const Date& date) const;
 
@@ -166,7 +166,7 @@ class Date {
         /**
          * @brief Compare two dates
          * @param date
-         * @return True if the date tested is lower or egual to the param date
+         * @return True if the date tested is lower or equal to the param date
          */
         bool operator<=(const Date& date) const;
 
@@ -180,7 +180,7 @@ class Date {
         /**
          * @brief Compare two dates
          * @param date
-         * @return True if the date tested is higher or egual to the param date
+         * @return True if the date tested is higher or equal to the param date
          */
         bool operator>=(const Date& date) const;
 

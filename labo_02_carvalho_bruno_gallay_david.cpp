@@ -1,7 +1,7 @@
 /*
 -----------------------------------------------------------------------------------
 Laboratory  : labo_02
-File        : labo_02_carvalho_bruno_gallay_david.cpp
+File        : labo_02_Carvalho_bruno_gallay_david.cpp
 Author(s)   : Bruno Carvalho et David Gallay
 Date        : 8.03.2020
 

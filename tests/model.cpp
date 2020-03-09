@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------------
 Laboratoire : labo_02
 Fichier     : model.cpp
-Auteur(s)   : Bruno carvalho et David Gallay
+Auteur(s)   : Bruno Carvalho et David Gallay
 Date        : 24.02.2020
 
 But         : Example of test file for a function

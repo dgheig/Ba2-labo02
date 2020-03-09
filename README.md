@@ -1,7 +1,7 @@
 # labo02 - Classes
 
 ### Contributors
-* carvalho Bruno
+* Carvalho Bruno
 * Gallay David
 
 ### Language

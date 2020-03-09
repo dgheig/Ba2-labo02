@@ -95,23 +95,23 @@ Date& Date::setYear(unsigned year) {
     return *this;
 }
 
-unsigned Date::getDay() {
+unsigned Date::getDay() const {
     return _day;
 }
 
-unsigned Date::getMonthNo() {
+unsigned Date::getMonthNo() const {
     return _month;
 }
 
-std::string Date::getMonthString() {
+std::string Date::getMonthString() const {
     return monthToString(_month);
 }
 
-Month Date::getMonthEnum() {
+Month Date::getMonthEnum() const {
     return Month(_month);
 }
 
-unsigned Date::getYear() {
+unsigned Date::getYear() const {
     return _year;
 }
 
@@ -139,7 +139,7 @@ bool Date::isDayValid(unsigned day, unsigned month, unsigned year) {
     return 0 < day and day <= dayInMonth(month, year);
 }
 
-bool Date::isValid() {
+bool Date::isValid() const {
     return _is_valid;
 }
 
