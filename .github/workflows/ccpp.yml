@@ -16,3 +16,12 @@ jobs:
 
     - name: run labo02
       run: ./Ba2-labo02 <<< '\n'
+
+    - name: run testComparisonOperators
+      run: ./testComparisonOperators
+
+    - name: run testDiffDate
+      run: ./testDiffDate
+
+    - name: run testSetters
+      run: ./testSetters
