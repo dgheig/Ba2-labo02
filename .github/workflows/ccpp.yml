@@ -23,5 +23,5 @@ jobs:
     - name: run testDiffDate
       run: ./testDiffDate
 
-    - name: run testSetters
-      run: ./testSetters
+    - name: run testAccessors
+      run: ./testAccessors
