@@ -20,8 +20,8 @@ jobs:
     - name: run testComparisonOperators
       run: ./testComparisonOperators
 
-    - name: run testDiffDate
-      run: ./testDiffDate
+    # - name: run testDiffDate
+    #   run: ./testDiffDate
 
-    - name: run testSetters
-      run: ./testSetters
+    # - name: run testSetters
+    #   run: ./testSetters
