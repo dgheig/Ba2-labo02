@@ -1,7 +1,7 @@
 /*
 -----------------------------------------------------------------------------------
 Laboratoire : labo_02
-Fichier     : diff_date.cpp
+Fichier     : testDiffDate.cpp
 Auteur(s)   : Bruno Carvalho et David Gallay
 Date        : 24.02.2020
 

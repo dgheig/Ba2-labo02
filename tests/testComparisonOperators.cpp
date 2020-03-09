@@ -1,7 +1,7 @@
 /*
 -----------------------------------------------------------------------------------
 Laboratoire : labo_02
-Fichier     : setters.cpp
+Fichier     : testComparisonOperators.cpp
 Auteur(s)   : Bruno Carvalho et David Gallay
 Date        : 24.02.2020
 
