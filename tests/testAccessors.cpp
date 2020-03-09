@@ -1,11 +1,11 @@
 /*
 -----------------------------------------------------------------------------------
 Laboratoire : labo_02
-Fichier     : testSetters.cpp
+Fichier     : testAccessors.cpp
 Auteur(s)   : Bruno Carvalho et David Gallay
 Date        : 24.02.2020
 
-But         : Example of test file for a function
+But         : Example of test file for getters and setters
 Remarque(s) :
 Compilateur : g++ 7.4.0
 -----------------------------------------------------------------------------------*/
