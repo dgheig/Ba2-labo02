@@ -43,7 +43,7 @@ std::string toString(Month month) {
     return monthToString(unsigned(month));
 }
 
-unsigned toMonth(std::string month) {
+unsigned convertMonth(std::string month) {
     for(size_t index = 0; index < MONTH_NAME_SIZE; ++index) {
         if(MONTH_NAME[index] == month) {
             return (unsigned)index;
@@ -86,7 +86,7 @@ Date& Date::setMonth(Month month) {
 }
 
 Date& Date::setMonth(std::string month) {
-    return setMonth(toMonth(month));
+    return setMonth(convertMonth(month));
 }
 
 Date& Date::setYear(unsigned year) {
@@ -291,7 +291,53 @@ Date& Date::operator-=(unsigned jours) {
 
 }
 
+
+Date& Date::operator+=(int days) {
+    if(days < 0)
+        return *this -= unsigned(-days);
+    return *this += unsigned(days);
+}
+
+Date& Date::operator-=(int days) {
+    if(days < 0)
+        return *this += unsigned(-days);
+    return *this -= unsigned(days);
+}
+
+int Date::get_days_since_reference_day() const {
+
+   const int DAY_PER_YEAR   = 365;
+   const int MONTH_PER_YEAR = 12;
+   const int REFERENCE_YEAR = 1600; // Must be a leap year
+
+   int start_of_year_shifter = (14 - _month) / MONTH_PER_YEAR;
+   int number_of_months = _month + MONTH_PER_YEAR * start_of_year_shifter - 3;
+   int number_of_years = _year - REFERENCE_YEAR - start_of_year_shifter;
+   int number_of_leap_years = number_of_years / 4 - number_of_years / 100 + number_of_years / 400;
+
+   int days = _day + (153 * number_of_months + 2) / 5 + DAY_PER_YEAR * number_of_years + number_of_leap_years + 58;
+
+   return days;
+
+}
+
+int Date::operator-(const Date& date) const {
+    return get_days_since_reference_day() - date.get_days_since_reference_day();
+}
+
 Date operator+(Date date, unsigned jours) {
+    return date += jours;
+}
+
+Date operator+(unsigned jours, const Date& date) {
+    return date + jours;
+}
+
+Date operator-(Date date, unsigned jours) {
+    return date -= jours;
+}
+
+Date operator+(Date date, int jours) {
     return date += jours;
 }
 
@@ -299,7 +345,7 @@ Date operator+(int jours, const Date& date) {
     return date + jours;
 }
 
-Date operator-(Date date, unsigned jours) {
+Date operator-(Date date, int jours) {
     return date -= jours;
 }
 

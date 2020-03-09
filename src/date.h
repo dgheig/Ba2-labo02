@@ -146,7 +146,12 @@ class Date {
 
         Date& operator+=(unsigned jours);
         Date& operator-=(unsigned jours);
+
+        Date& operator+=(int days);
+        Date& operator-=(int days);
         Date& operator=(const Date& date);
+
+        int operator-(const Date& date) const;
 
         Date& operator++();     // ++date
         Date operator++(int);   // date++
@@ -158,6 +163,7 @@ class Date {
 
     private:
         void setValidity();
+        int get_days_since_reference_day() const;
         static bool isDateValid(unsigned day, unsigned month, unsigned year);
         static bool isYearValid(unsigned year);
         static bool isMonthValid(unsigned month);
@@ -174,8 +180,12 @@ std::ostream& operator<<(std::ostream& os, const Date& date);
 std::istream& operator>>(std::istream& is, Date& date);
 
 Date operator+(Date date, unsigned jours);
-Date operator+(int jours, const Date& date);
+Date operator+(unsigned jours, const Date date);
 Date operator-(Date date, unsigned jours);
+
+Date operator+(Date date, int jours);
+Date operator+(int jours, const Date& date);
+Date operator-(Date date, int jours);
 
 
 #endif

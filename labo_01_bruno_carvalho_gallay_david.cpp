@@ -39,6 +39,10 @@ int main() {
     cout << date - 31 << endl;
 
 
+    date = Date(15, 1, 2020);
+    cout << date - () << endl;
+
+
     cout << "Please, press <ENTER> to end the program" << endl;
     WAIT_ENTER;
     return EXIT_SUCCESS;
