@@ -245,17 +245,17 @@ bool Date::operator>=(const Date &date) const {
     return !(*this < date);
 }
 
-Date& Date::operator+=(unsigned jours) {
+Date& Date::operator+=(unsigned days) {
     if(!isValid())
         return *this;
 
-    while(jours) {
+    while(days) {
         unsigned nbDays = dayInMonth(_month, _year) - _day + 1;
-        if(nbDays > jours) {
-            _day += jours;
-            jours = 0;
+        if(nbDays > days) {
+            _day += days;
+            days = 0;
         } else {
-            jours -= nbDays;
+            days -= nbDays;
             _day = 1;
             if(_month == unsigned(Month::DECEMBER)) {
                 _month = 1;
@@ -268,16 +268,16 @@ Date& Date::operator+=(unsigned jours) {
     return *this;
 }
 
-Date& Date::operator-=(unsigned jours) {
+Date& Date::operator-=(unsigned days) {
     if(!isValid())
         return *this;
 
-    while (jours) {
-        if (_day > jours) {
-            _day -= jours;
-            jours = 0;
+    while (days) {
+        if (_day > days) {
+            _day -= days;
+            days = 0;
         } else {
-            jours -= _day;
+            days -= _day;
             if (_month == unsigned(Month::JANUARY)) {
                 _month = unsigned(Month::DECEMBER);
                 --_year;
@@ -325,28 +325,28 @@ int Date::operator-(const Date& date) const {
     return get_days_since_reference_day() - date.get_days_since_reference_day();
 }
 
-Date operator+(Date date, unsigned jours) {
-    return date += jours;
+Date operator+(Date date, unsigned days) {
+    return date += days;
 }
 
-Date operator+(unsigned jours, const Date& date) {
-    return date + jours;
+Date operator+(unsigned days, const Date& date) {
+    return date + days;
 }
 
-Date operator-(Date date, unsigned jours) {
-    return date -= jours;
+Date operator-(Date date, unsigned days) {
+    return date -= days;
 }
 
-Date operator+(Date date, int jours) {
-    return date += jours;
+Date operator+(Date date, int days) {
+    return date += days;
 }
 
-Date operator+(int jours, const Date& date) {
-    return date + jours;
+Date operator+(int days, const Date& date) {
+    return date + days;
 }
 
-Date operator-(Date date, int jours) {
-    return date -= jours;
+Date operator-(Date date, int days) {
+    return date -= days;
 }
 
 Date& Date::operator++() {

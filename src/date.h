@@ -136,33 +136,143 @@ class Date {
          */
         static unsigned dayInMonth(unsigned month, unsigned year);
 
+        /**
+         * @brief Convert month to string according to the define format
+         * @return Month converted into string
+         */
         operator std::string();
+
+        /**
+         * @brief Compare two dates
+         * @param date
+         * @return True if the two dates are egual
+         */
         bool operator==(const Date& date) const;
+
+        /**
+         * @brief Compare two dates
+         * @param date
+         * @return True if the two dates are inegual
+         */
         bool operator!=(const Date& date) const;
+
+        /**
+         * @brief Compare two dates
+         * @param date
+         * @return True if the date tested is lower than the param date
+         */
         bool operator<(const Date& date) const;
+
+        /**
+         * @brief Compare two dates
+         * @param date
+         * @return True if the date tested is lower or egual to the param date
+         */
         bool operator<=(const Date& date) const;
+
+        /**
+         * @brief Compare two dates
+         * @param date
+         * @return True if the date tested is higher than the param date
+         */
         bool operator>(const Date& date) const;
+
+        /**
+         * @brief Compare two dates
+         * @param date
+         * @return True if the date tested is higher or egual to the param date
+         */
         bool operator>=(const Date& date) const;
 
-        Date& operator+=(unsigned jours);
-        Date& operator-=(unsigned jours);
+        /**
+         * @brief Add X day to a date
+         * @param days
+         * @return The object date modified
+         */
+        Date& operator+=(unsigned days);
 
+        /**
+         * @brief Substract X day to a date
+         * @param days
+         * @return The object date modified
+         */
+        Date& operator-=(unsigned days);
+
+        /**
+         * @brief Add X day to a date
+         * @param days
+         * @return The object date modified
+         */
         Date& operator+=(int days);
-        Date& operator-=(int days);
-        Date& operator=(const Date& date);
 
+        /**
+         * @brief Substract X day to a date
+         * @param days
+         * @return The object date modified
+         */
+        Date& operator-=(int days);
+
+        /**
+         * @brief Get the number of days between two dates
+         * @param days
+         * @return days as int
+         */
         int operator-(const Date& date) const;
 
-        Date& operator++();     // ++date
-        Date operator++(int);   // date++
-        Date& operator--();     // --date
-        Date operator--(int);   // date--
+        /**
+         * @brief Assign an object date to an other object date
+         * @param date
+         * @return The object date modified
+         */
+        Date& operator=(const Date& date);
+
+        /**
+         * @brief Pre-incrementation of an object date
+         * @return The object date modified
+         */
+        Date& operator++();
+
+        /**
+         * @brief Post-incrementation of an object date
+         * @return The object date before incrementation
+         */
+        Date operator++(int);
+        /**
+         * @brief Pre-decrementation of an object date
+         * @return The object date modified
+         */
+        Date& operator--();
+        /**
+         * @brief Post-decrementation of an object date
+         * @return The object date before decrementation
+         */
+        Date operator--(int);
+
+        /**
+         * @brief Display date in a format DD.MM.YYYY
+         * @param os
+         * @return output stream "DD.MM.YYYY"
+         */
         std::ostream& display(std::ostream& os = std::cout) const;
+
+        /**
+         * @brief Receive date in a format DD.MM.YYYY
+         * @param is
+         * @return  input stream "DD.MM.YYYY"
+         */
         std::istream& receive(std::istream& is = std::cin);
 
 
     private:
+        /**
+         * @brief Set validity according to inner values
+         */
         void setValidity();
+
+        /**
+         * @brief Get the number of days since a reference date,
+         *        it is used to compute the number of day between two dates
+         */
         int get_days_since_reference_day() const;
         static bool isDateValid(unsigned day, unsigned month, unsigned year);
         static bool isYearValid(unsigned year);
@@ -179,13 +289,13 @@ class Date {
 std::ostream& operator<<(std::ostream& os, const Date& date);
 std::istream& operator>>(std::istream& is, Date& date);
 
-Date operator+(Date date, unsigned jours);
-Date operator+(unsigned jours, const Date date);
-Date operator-(Date date, unsigned jours);
+Date operator+(Date date, unsigned days);
+Date operator+(unsigned days, const Date date);
+Date operator-(Date date, unsigned days);
 
-Date operator+(Date date, int jours);
-Date operator+(int jours, const Date& date);
-Date operator-(Date date, int jours);
+Date operator+(Date date, int days);
+Date operator+(int days, const Date& date);
+Date operator-(Date date, int days);
 
 
 #endif
