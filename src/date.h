@@ -136,23 +136,109 @@ class Date {
          */
         static unsigned dayInMonth(unsigned month, unsigned year);
 
+        /**
+         * @brief Convert month to string according to the define format
+         * @return Month converted into string
+         */
         operator std::string();
+
+        /**
+         * @brief Compare two dates
+         * @param date
+         * @return True if the two dates are egual
+         */
         bool operator==(const Date& date) const;
+
+        /**
+         * @brief Compare two dates
+         * @param date
+         * @return True if the two dates are inegual
+         */
         bool operator!=(const Date& date) const;
+
+        /**
+         * @brief Compare two dates
+         * @param date
+         * @return True if the date tested is lower than the param date
+         */
         bool operator<(const Date& date) const;
+
+        /**
+         * @brief Compare two dates
+         * @param date
+         * @return True if the date tested is lower or egual to the param date
+         */
         bool operator<=(const Date& date) const;
+
+        /**
+         * @brief Compare two dates
+         * @param date
+         * @return True if the date tested is higher than the param date
+         */
         bool operator>(const Date& date) const;
+
+        /**
+         * @brief Compare two dates
+         * @param date
+         * @return True if the date tested is higher or egual to the param date
+         */
         bool operator>=(const Date& date) const;
 
+        /**
+         * @brief Add X day to a date
+         * @param jours
+         * @return The object date modified
+         */
         Date& operator+=(unsigned jours);
+
+        /**
+         * @brief Substract X day to a date
+         * @param jours
+         * @return The object date modified
+         */
         Date& operator-=(unsigned jours);
+
+        /**
+         * @brief Assign an object date to an other object date
+         * @param date
+         * @return The object date modified
+         */
         Date& operator=(const Date& date);
 
-        Date& operator++();     // ++date
-        Date operator++(int);   // date++
-        Date& operator--();     // --date
-        Date operator--(int);   // date--
+        /**
+         * @brief Pre-incrementation of an object date
+         * @return The object date modified
+         */
+        Date& operator++();
+
+        /**
+         * @brief Post-incrementation of an object date
+         * @return The object date before incrementation
+         */
+        Date operator++(int);
+        /**
+         * @brief Pre-decrementation of an object date
+         * @return The object date modified
+         */
+        Date& operator--();
+        /**
+         * @brief Post-decrementation of an object date
+         * @return The object date before decrementation
+         */
+        Date operator--(int);
+
+        /**
+         * @brief Display date in a format DD.MM.YYYY
+         * @param os
+         * @return output stream "DD.MM.YYYY"
+         */
         std::ostream& display(std::ostream& os = std::cout) const;
+
+        /**
+         * @brief Receive date in a format DD.MM.YYYY
+         * @param is
+         * @return  input stream "DD.MM.YYYY"
+         */
         std::istream& receive(std::istream& is = std::cin);
 
 

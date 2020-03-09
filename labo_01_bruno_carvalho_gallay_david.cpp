@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------------
 Laboratory  : labo_02
 File        : labo_02_carvalho_bruno_gallay_david.cpp
-Author(s)   : Bruno carvalho et David Gallay
+Author(s)   : Bruno Carvalho et David Gallay
 Date        : 8.03.2020
 
 Purpose     : Prove the good working of classes defined in others files.
@@ -10,7 +10,7 @@ Remark(s)   :
                 There is the github repository:
                 https://github.com/dgheig/Ba2-labo02
 
-Compiler    : MinGW-g++ 6.3.0 and g++ 7.4.0
+Compiler    : g++ 7.4.0
 -----------------------------------------------------------------------------------*/
 #include <iostream>
 #include <cstdlib>
@@ -31,7 +31,7 @@ int main() {
     date = Date(1, 1, 2020);
     cout << date + 1 << endl;
     cout << date + 30 << endl;
-    cout << date + 31 << endl;
+    cout << date + (-31) << endl;
 
     date = Date(1, 2, 2020);
     cout << date - 1 << endl;
